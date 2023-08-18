@@ -7,25 +7,23 @@ using System.Threading.Tasks;
 
 namespace LabNetPractica1
 {
-    public abstract class TransportePublico:IDialogar
+    public abstract class TransportePublico
     {
-        public TransportePublico(int cantPasajeros, string mensaje)
+
+        protected int pasajeros;
+
+        public TransportePublico(int pasajeros)
         {
-            getPasajeros = cantPasajeros;
-            this.mensaje = mensaje;
+            this.pasajeros = pasajeros;
         }
 
-        public int getPasajeros { get; }
+        public abstract void Avanzar();
+        public abstract void Detenerse();
 
-        public string mensaje { get; }
-
-        public abstract string Avanzar();
-
-        public string Dialogar()
+        public int GetPasajeros()
         {
-            return mensaje;
+            return pasajeros;
         }
-
 
 
     }

@@ -8,14 +8,18 @@ namespace LabNetPractica1
 {
     public class Taxi:TransportePublico
     {
-        public Taxi(int cantPasajeros, string mensaje) : base(cantPasajeros, mensaje)
+        public Taxi(int pasajeros) : base(pasajeros)
         {
-
         }
 
-        public override string Avanzar()
+        public override void Avanzar()
         {
-            return $"Soy un taxi y llevo {getPasajeros} pasajeros";
+            Console.WriteLine("Taxi avanzando...");
+        }
+
+        public override void Detenerse()
+        {
+            Console.WriteLine("Taxi deteniéndose...");
         }
     }
 }

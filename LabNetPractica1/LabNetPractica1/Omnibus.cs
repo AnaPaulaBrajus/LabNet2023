@@ -9,14 +9,18 @@ namespace LabNetPractica1
 {
     public class Omnibus: TransportePublico
     {
-        public Omnibus(int cantPasajeros, string mensaje) : base(cantPasajeros, mensaje)
+        public Omnibus(int pasajeros) : base(pasajeros)
         {
-
         }
 
-        public override string Avanzar()
+        public override void Avanzar()
         {
-            return string.Format("Soy un omnibus y llevo {0} pasajeros",getPasajeros);
+            Console.WriteLine("Ómnibus avanzando...");
+        }
+
+        public override void Detenerse()
+        {
+            Console.WriteLine("Ómnibus deteniéndose...");
         }
 
     }

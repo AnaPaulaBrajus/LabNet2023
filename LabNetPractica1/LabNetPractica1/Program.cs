@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,31 +12,86 @@ namespace LabNetPractica1
         static void Main(string[] args)
         {
             List<TransportePublico> transportes = new List<TransportePublico>();
-            Console.WriteLine("¿Que tipo de trasporte es: O:Omnibus, T:Taxi?");
-            string tipo = Console.ReadLine();
-            if (tipo.ToUpper() == "O")
-            {
-                TransportePublico transporte = new Omnibus(100, "Soy un omnibus");
-                transportes.Add(transporte);
-            }
-            else if(tipo.ToUpper()=="T")
-            {
-                TransportePublico transporte2 = new Taxi(2, "Soy un taxi");
-                transportes.Add(transporte2);
 
-            }
-            else
+            string respuesta;
+
+            do
             {
-                Console.WriteLine("Respuesta no valida, por favor ingresar O ó T");
-                Console.ReadKey();
+                Console.Write("¿Desea ingresar un Taxi (T) o un Ómnibus (O)? ");
+                string tipoTransporte = Console.ReadLine();
+
+                if (tipoTransporte.Equals("T", StringComparison.OrdinalIgnoreCase))
+                {
+                    int pasajerosTaxi;
+                    while (true)
+                    {
+                        Console.Write("Ingrese la cantidad de pasajeros para el Taxi: ");
+                        if (int.TryParse(Console.ReadLine(), out pasajerosTaxi) && pasajerosTaxi >= 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Cantidad de pasajeros inválida. Intente de nuevo.");
+                        }
+                    }
+                    transportes.Add(new Taxi(pasajerosTaxi));
+                }
+                else if (tipoTransporte.Equals("O", StringComparison.OrdinalIgnoreCase))
+                {
+                    int pasajerosOmnibus;
+                    while (true)
+                    {
+                        Console.Write("Ingrese la cantidad de pasajeros para el Ómnibus: ");
+                        if (int.TryParse(Console.ReadLine(), out pasajerosOmnibus) && pasajerosOmnibus >= 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Cantidad de pasajeros inválida. Intente de nuevo.");
+                        }
+                    }
+                    transportes.Add(new Omnibus(pasajerosOmnibus));
+                }
+                else
+                {
+                    Console.WriteLine("Tipo de transporte no válido. Intente de nuevo.");
+                }
+
+                Console.Write("¿Desea ingresar otro transporte? (S/N): ");
+                respuesta = Console.ReadLine();
+            }
+            while (respuesta.Equals("S", StringComparison.OrdinalIgnoreCase));
+
+            Console.WriteLine();
+            Console.WriteLine("Listas de transportes:");
+            Console.WriteLine();
+
+            int numeroTaxi = 1;
+            int numeroOmnibus = 1;
+
+            Console.WriteLine("Listas de taxis:");
+            foreach (var transporte in transportes)
+            {
+                if (transporte is Taxi)
+                {
+                    Console.WriteLine($"Taxi {numeroTaxi}: {transporte.GetPasajeros()} pasajeros");
+                    numeroTaxi++;
+                }
             }
 
-            foreach(var item in transportes)
+            Console.WriteLine();
+            Console.WriteLine("Listas de omnibus:");
+            foreach (var transporte in transportes)
             {
-                Console.WriteLine(item.Avanzar());
-                Console.WriteLine(item.Dialogar());
+                if (transporte is Omnibus)
+                {
+                    Console.WriteLine($"Ómnibus {numeroOmnibus}: {transporte.GetPasajeros()} pasajeros");
+                    numeroOmnibus++;
+                }
             }
-
+            Console.ReadKey();
         }
     }
 }
