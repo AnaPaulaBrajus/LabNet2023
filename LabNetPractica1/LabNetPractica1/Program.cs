@@ -27,13 +27,14 @@ namespace LabNetPractica1
                 string tipoTransporte = Console.ReadLine();
                 Console.ResetColor();
 
+
                 if (tipoTransporte.Equals("T", StringComparison.OrdinalIgnoreCase))
                 {
                     int pasajerosTaxi;
                     while (true)
                     {
                         Console.Write("Ingrese la cantidad de pasajeros para el Taxi: ");
-                        if (int.TryParse(Console.ReadLine(), out pasajerosTaxi) && pasajerosTaxi >= 0)
+                        if (int.TryParse(Console.ReadLine(), out pasajerosTaxi) && pasajerosTaxi >= 0 && pasajerosTaxi<= 4)
                         {
                             break;
                         }
