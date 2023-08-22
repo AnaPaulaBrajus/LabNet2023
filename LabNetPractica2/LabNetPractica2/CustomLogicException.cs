@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LabNetPractica2
 {
-    public class DivisonByZeroException:Exception
+    public class CustomLogicException: Exception
     {
-        public DivisonByZeroException(string message) : base("Exception: " + message)
+        public CustomLogicException(string message) : base(message)
         {
 
         }

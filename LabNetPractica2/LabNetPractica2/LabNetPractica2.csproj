@@ -43,7 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DivisonByZeroException.cs" />
+    <Compile Include="ChuckNorrisDivideByZeroException.cs" />
+    <Compile Include="CustomLogicException.cs" />
+    <Compile Include="Division.cs" />
+    <Compile Include="DivisionByZeroException.cs" />
+    <Compile Include="Logic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
