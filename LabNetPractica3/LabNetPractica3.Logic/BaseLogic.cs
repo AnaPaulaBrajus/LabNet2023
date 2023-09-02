@@ -1,5 +1,4 @@
 ﻿using LabNetPractica3.Data;
-using LabNetPractica3.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +7,13 @@ using System.Threading.Tasks;
 
 namespace LabNetPractica3.Logic
 {
-    public class CategoriesLogic
+    public class BaseLogic
     {
-        private readonly NorthwindContext context;
+        protected readonly NorthwindContext context;
 
-        public CategoriesLogic()
+        public BaseLogic()
         {
             context = new NorthwindContext();
-        }
-
-        public List<Categories> GetAll()
-        {
-            return context.Categories.ToList();
         }
     }
 }

@@ -13,7 +13,6 @@ namespace LabNetPractica3.Data
         {
         }
 
-        public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
 
